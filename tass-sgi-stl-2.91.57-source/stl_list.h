@@ -1,32 +1,4 @@
-/*
- *
- * Copyright (c) 1994
- * Hewlett-Packard Company
- *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Hewlett-Packard Company makes no
- * representations about the suitability of this software for any
- * purpose.  It is provided "as is" without express or implied warranty.
- *
- *
- * Copyright (c) 1996,1997
- * Silicon Graphics Computer Systems, Inc.
- *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Silicon Graphics makes no
- * representations about the suitability of this software for any
- * purpose.  It is provided "as is" without express or implied warranty.
- */
-
-/* NOTE: This is an internal header file, included by other STL headers.
- *   You should not attempt to use it directly.
- */
+//list容器
 
 #ifndef __SGI_STL_INTERNAL_LIST_H
 #define __SGI_STL_INTERNAL_LIST_H
@@ -37,6 +9,7 @@ __STL_BEGIN_NAMESPACE
 #pragma set woff 1174
 #endif
 
+//链表节点
 template <class T>
 struct __list_node {
   typedef void* void_pointer;
@@ -51,7 +24,7 @@ struct __list_iterator {
   typedef __list_iterator<T, const T&, const T*> const_iterator;
   typedef __list_iterator<T, Ref, Ptr>           self;
 
-  typedef bidirectional_iterator_tag iterator_category;
+  typedef bidirectional_iterator_tag iterator_category;    //list的迭代器类型是双向迭代器
   typedef T value_type;
   typedef Ptr pointer;
   typedef Ref reference;
@@ -59,7 +32,7 @@ struct __list_iterator {
   typedef size_t size_type;
   typedef ptrdiff_t difference_type;
 
-  link_type node;
+  link_type node;  //节点指针
 
   __list_iterator(link_type x) : node(x) {}
   __list_iterator() {}

@@ -1,21 +1,3 @@
-/*
- * Copyright (c) 1997
- * Silicon Graphics Computer Systems, Inc.
- *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Silicon Graphics makes no
- * representations about the suitability of this software for any
- * purpose.  It is provided "as is" without express or implied warranty.
- *
- */
-
-/* NOTE: This is an internal header file, included by other STL headers.
- *   You should not attempt to use it directly.
- */
-
 #ifndef __SGI_STL_INTERNAL_SLIST_H
 #define __SGI_STL_INTERNAL_SLIST_H
 
@@ -47,6 +29,7 @@ inline __slist_node_base* __slist_previous(__slist_node_base* head,
   return head;
 }
 
+//因为是单项链表  所以只能通过遍历来找到前一个节点。
 inline const __slist_node_base* __slist_previous(const __slist_node_base* head,
                                                  const __slist_node_base* node)
 {
@@ -54,6 +37,7 @@ inline const __slist_node_base* __slist_previous(const __slist_node_base* head,
     head = head->next;
   return head;
 }
+
 
 inline void __slist_splice_after(__slist_node_base* pos,
                                  __slist_node_base* before_first,
@@ -68,6 +52,7 @@ inline void __slist_splice_after(__slist_node_base* pos,
   }
 }
 
+//链表反向
 inline __slist_node_base* __slist_reverse(__slist_node_base* node)
 {
   __slist_node_base* result = node;
@@ -81,6 +66,7 @@ inline __slist_node_base* __slist_reverse(__slist_node_base* node)
   }
   return result;
 }
+
 
 template <class T>
 struct __slist_node : public __slist_node_base
